@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f5f5f5;
+        }
+
+        #to_d0_list {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        #text {
+            width: calc(100% - 60px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        #button {
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        #button:hover {
+            background: linear-gradient(45deg, #2575fc, #6a11cb);
+        }
+
+        #work {
+            margin-top: 20px;
+        }
+
+        #work div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f1f1f1;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        #work div:hover {
+            background: #e1e1e1;
+            transform: scale(1.02);
+            box-shadow: 1px 2px 3px black;
+        }
+
+        #work p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        #work button {
+            background: #ff4b5c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        #work button:hover {
+            background: #ff1e2b;
+        }
+    </style>
+</head>
+<body>
+    <div id="to_d0_list">
+        <input type="text" id="text">
+        <button id="button">Add</button>
+        <div id="work"></div>
+    </div>
+
+    <script>
+        let textField=document.getElementById("text");
+        let button=document.getElementById("button");
+        let workDiv=document.getElementById("work");
+        button.addEventListener("click",function(){
+            if(textField.value===''){
+             alert("input some text");
+             return;
+            }
+            
+            let div=document.createElement('div');
+            let p=document.createElement('p');
+            p.innerText=textField.value;
+            textField.value="";
+            let delete_button=document.createElement('button');
+            delete_button.innerText="delete";
+            div.appendChild(p);
+            div.appendChild(delete_button);
+            div.style.border="2px solid black"
+            workDiv.appendChild(div);
+            delete_button.addEventListener("click",function(){
+                // div.remove();
+                div.style.display="none";
+            })
+
+        })
+    </script>
+</body>
+</html>
